@@ -40,7 +40,7 @@ public class IconTarget extends BitmapImageViewTarget {
         if (selected) {
             return viewContext.getResources().getColor(R.color.selection_grey);
         } else {
-            return colorPreference.getColor(ColorUsage.ACCENT);
+            return colorPreference.getColor(ColorUsage.ICON_SKIN);
         }
     }
 
