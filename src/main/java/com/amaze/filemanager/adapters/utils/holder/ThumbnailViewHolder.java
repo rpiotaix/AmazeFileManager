@@ -1,6 +1,7 @@
 package com.amaze.filemanager.adapters.utils.holder;
 
 import android.graphics.Bitmap;
+import android.support.annotation.DrawableRes;
 import android.view.View;
 
 import com.amaze.filemanager.adapters.Recycleradapter;
@@ -20,10 +21,10 @@ import jp.wasabeef.glide.transformations.GrayscaleTransformation;
  */
 
 public abstract class ThumbnailViewHolder extends ViewHolder {
-    public ThumbnailViewHolder(Recycleradapter adapter,
-                               View view,
-                               ViewConfigProvider configProvider,
-                               UtilitiesProviderInterface utilsProvider) {
+    ThumbnailViewHolder(Recycleradapter adapter,
+                        View view,
+                        ViewConfigProvider configProvider,
+                        UtilitiesProviderInterface utilsProvider) {
         super(adapter, view, configProvider, utilsProvider);
     }
 
@@ -31,6 +32,8 @@ public abstract class ThumbnailViewHolder extends ViewHolder {
     @SuppressWarnings("unchecked")
     protected void loadIcon() {
         GenericRequestBuilder r = createRequest();
+        r.placeholder(getPlaceholder());
+
         List<Transformation<Bitmap>> transformationList = new ArrayList<>();
 
         addTransformations(transformationList);
@@ -47,6 +50,9 @@ public abstract class ThumbnailViewHolder extends ViewHolder {
             transformationList.add(new GrayscaleTransformation(getViewContext()));
         }
     }
+
+    @DrawableRes
+    public abstract int getPlaceholder();
 
     protected abstract GenericRequestBuilder createRequest();
 

@@ -1,8 +1,10 @@
 package com.amaze.filemanager.adapters.utils.holder;
 
 import android.graphics.Bitmap;
+import android.support.annotation.DrawableRes;
 import android.view.View;
 
+import com.amaze.filemanager.R;
 import com.amaze.filemanager.adapters.Recycleradapter;
 import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
 import com.amaze.filemanager.utils.UtilitiesProviderInterface;
@@ -19,6 +21,9 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  */
 
 public class MediaViewHolder extends ThumbnailViewHolder {
+    @DrawableRes
+    private static final int PLACEHOLDER = R.drawable.ic_doc_image;
+
     public MediaViewHolder(Recycleradapter adapter, View view, ViewConfigProvider configProvider, UtilitiesProviderInterface utilsProvider) {
         super(adapter, view, configProvider, utilsProvider);
     }
@@ -28,6 +33,7 @@ public class MediaViewHolder extends ThumbnailViewHolder {
         return Glide.with(getViewContext())
                     .load(getData().getUri())
                     .asBitmap()
+                    .placeholder(PLACEHOLDER)
                     .centerCrop();
     }
 
@@ -38,5 +44,10 @@ public class MediaViewHolder extends ThumbnailViewHolder {
         if (getConfig().circularThumbnails()) {
             transformationList.add(new CropCircleTransformation(getAdapter().getContext()));
         }
+    }
+
+    @Override
+    public int getPlaceholder() {
+        return PLACEHOLDER;
     }
 }

@@ -2,8 +2,10 @@ package com.amaze.filemanager.adapters.utils.holder;
 
 import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
+import android.support.annotation.DrawableRes;
 import android.view.View;
 
+import com.amaze.filemanager.R;
 import com.amaze.filemanager.adapters.Recycleradapter;
 import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
 import com.amaze.filemanager.adapters.utils.apk.PackageInfoIconGetter;
@@ -18,8 +20,16 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
  */
 
 public class ApkViewHolder extends ThumbnailViewHolder {
+    @DrawableRes
+    private static final int PLACEHOLDER = R.drawable.ic_doc_apk;
+
     public ApkViewHolder(Recycleradapter adapter, View view, ViewConfigProvider configProvider, UtilitiesProviderInterface utilsProvider) {
         super(adapter, view, configProvider, utilsProvider);
+    }
+
+    @Override
+    public int getPlaceholder() {
+        return PLACEHOLDER;
     }
 
     @Override

@@ -26,9 +26,9 @@ public class CircleGradientDrawable extends GradientDrawable {
      * @param appTheme current theme light/dark which will determine the boundary color
      * @param metrics  to convert the boundary width for {@link #setStroke} method from dp to px
      */
+    @Deprecated
     public CircleGradientDrawable(String color, AppTheme appTheme, DisplayMetrics metrics) {
-        this(appTheme, metrics);
-        setColor(Color.parseColor(color));
+        this(Color.parseColor(color), appTheme, metrics);
     }
 
     /**
@@ -39,22 +39,18 @@ public class CircleGradientDrawable extends GradientDrawable {
      * @param metrics  to convert the boundary width for {@link #setStroke} method from dp to px
      */
     public CircleGradientDrawable(@ColorInt int color, AppTheme appTheme, DisplayMetrics metrics) {
-        this(appTheme, metrics);
-        setColor(color);
-    }
-
-
-    public CircleGradientDrawable(AppTheme appTheme, DisplayMetrics metrics) {
         this.mDisplayMetrics = metrics;
 
+        setColor(color);
         setShape(OVAL);
         setSize(1, 1);
-        setStroke(dpToPx(STROKE_WIDTH), (appTheme.equals(AppTheme.DARK)) ? Color.parseColor(STROKE_COLOR_DARK)
-                : Color.parseColor(STROKE_COLOR_LIGHT));
+
+        String strokeColor = appTheme.equals(AppTheme.DARK) ? STROKE_COLOR_DARK : STROKE_COLOR_LIGHT;
+        setStroke(dpToPx(STROKE_WIDTH), Color.parseColor(strokeColor));
+
     }
 
     private int dpToPx(int dp) {
-        int px = Math.round(mDisplayMetrics.density * dp);
-        return px;
+        return Math.round(mDisplayMetrics.density * dp);
     }
 }

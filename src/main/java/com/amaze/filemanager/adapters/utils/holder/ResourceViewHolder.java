@@ -41,7 +41,6 @@ public class ResourceViewHolder extends ViewHolder {
              .into(getIconTarget());
     }
 
-
     @DrawableRes
     private int getIconRes(DataHolder data) {
         int res = R.drawable.ic_grid_folder_new;
