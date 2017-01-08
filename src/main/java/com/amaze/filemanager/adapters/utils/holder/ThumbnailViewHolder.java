@@ -10,6 +10,8 @@ import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.request.animation.DrawableCrossFadeViewAnimation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,7 @@ public abstract class ThumbnailViewHolder extends ViewHolder {
     }
 
     protected void addTransformations(List<Transformation<Bitmap>> transformationList) {
+        transformationList.add(new CenterCrop(getViewContext()));
 
         if (isSelected()) {
             transformationList.add(new GrayscaleTransformation(getViewContext()));

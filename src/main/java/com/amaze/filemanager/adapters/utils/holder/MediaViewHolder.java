@@ -33,15 +33,14 @@ public class MediaViewHolder extends ThumbnailViewHolder {
         return Glide.with(getViewContext())
                     .load(getData().getUri())
                     .asBitmap()
-                    .placeholder(PLACEHOLDER)
-                    .centerCrop();
+                    .placeholder(PLACEHOLDER);
     }
 
     @Override
     protected void addTransformations(List<Transformation<Bitmap>> transformationList) {
         super.addTransformations(transformationList);
 
-        if (getConfig().circularThumbnails()) {
+        if (getConfig().isList() && getConfig().circularThumbnails()) {
             transformationList.add(new CropCircleTransformation(getAdapter().getContext()));
         }
     }

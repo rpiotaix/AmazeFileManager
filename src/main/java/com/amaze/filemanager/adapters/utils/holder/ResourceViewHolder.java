@@ -14,10 +14,19 @@ import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
 import com.amaze.filemanager.ui.icons.Icons;
 import com.amaze.filemanager.ui.views.CircleGradientDrawable;
 import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;
-import com.amaze.filemanager.utils.theme.AppTheme;
+import com.amaze.filemanager.utils.color.ColorUsage;
+import com.bumptech.glide.BitmapTypeRequest;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SizeReadyCallback;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jp.wasabeef.glide.transformations.ColorFilterTransformation;
+import jp.wasabeef.glide.transformations.GrayscaleTransformation;
 
 /**
  * Created by rpiotaix on 18/12/16.
@@ -35,10 +44,22 @@ public class ResourceViewHolder extends ViewHolder {
 
     @Override
     protected void loadIcon() {
-        Glide.with(getAdapter().getContext())
-             .load(getIconRes(getData()))
-             .asBitmap()
-             .into(getIconTarget());
+        BitmapTypeRequest<Integer> r = Glide.with(getAdapter().getContext())
+                                            .load(getIconRes(getData()))
+                                            .asBitmap();
+
+        if (!getConfig().isList()) {
+            List<Transformation<Bitmap>> transformations = new ArrayList<>();
+            transformations.add(new ColorFilterTransformation(getViewContext(), getUtilsProvider().getColorPreference()
+                                                                                                  .getColor(ColorUsage.ICON_SKIN)));
+
+            if (isSelected()) {
+                transformations.add(new GrayscaleTransformation(getViewContext()));
+            }
+
+            r.transform(new MultiTransformation<>(transformations));
+        }
+        r.into(getIconTarget());
     }
 
     @DrawableRes
@@ -77,13 +98,15 @@ public class ResourceViewHolder extends ViewHolder {
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 ImageView view = getView();
 
-                view.setBackgroundDrawable(
-                        new CircleGradientDrawable(
-                                getColor(),
-                                getUtilsProvider().getAppTheme(),
-                                view.getResources().getDisplayMetrics())
-                );
-                view.setScaleType(ImageView.ScaleType.CENTER);
+                if (getConfig().isList()) {
+                    view.setBackgroundDrawable(
+                            new CircleGradientDrawable(
+                                    getColor(),
+                                    getUtilsProvider().getAppTheme(),
+                                    view.getResources().getDisplayMetrics())
+                    );
+                    view.setScaleType(ImageView.ScaleType.CENTER);
+                }
 
                 super.onResourceReady(resource, glideAnimation);
             }

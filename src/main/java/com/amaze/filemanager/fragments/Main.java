@@ -115,7 +115,7 @@ public class Main extends android.support.v4.app.Fragment {
     public Recycleradapter adapter;
     public ActionMode mActionMode;
     public SharedPreferences Sp;
-    public BitmapDrawable folder, apk, DARK_IMAGE, DARK_VIDEO;
+    public BitmapDrawable folder, apk;
     public LinearLayout buttons;
     public int sortby, dsort, asc;
     public String home, CURRENT_PATH = "", goback;
@@ -296,8 +296,6 @@ public class Main extends android.support.v4.app.Fragment {
         mFolderBitmap = BitmapFactory.decodeResource(res, R.drawable.ic_grid_folder_new);
         folder = new BitmapDrawable(res, mFolderBitmap);;
         getSortModes();
-        DARK_IMAGE = new BitmapDrawable(res, BitmapFactory.decodeResource(res, R.drawable.ic_doc_image_dark));
-        DARK_VIDEO = new BitmapDrawable(res, BitmapFactory.decodeResource(res, R.drawable.ic_doc_video_dark));
         this.setRetainInstance(false);
         f = new HFile(OpenMode.UNKNOWN, CURRENT_PATH);
         f.generateMode(getActivity());

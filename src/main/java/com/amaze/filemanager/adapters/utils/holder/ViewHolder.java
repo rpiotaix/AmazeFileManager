@@ -80,7 +80,7 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
                                             .getColor(ColorUsage.ACCENT);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            checkImageView.setBackground(
+            getCheckView().setBackground(
                     new CircleGradientDrawable(
                             accentColor,
                             utilsProvider.getAppTheme(),
@@ -88,7 +88,7 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
                     )
             );
         } else
-            checkImageView.setBackgroundDrawable(
+            getCheckView().setBackgroundDrawable(
                     new CircleGradientDrawable(
                             accentColor,
                             getUtilsProvider().getAppTheme(),

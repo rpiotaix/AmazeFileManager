@@ -9,12 +9,14 @@ import com.amaze.filemanager.fragments.Main;
  */
 
 public class DumbActionListener implements ActionListener<DataHolder> {
-    private final Recycleradapter adapter;
     private Main main;
+    private final Recycleradapter adapter;
+    private ViewConfigProvider configProvider;
 
-    public DumbActionListener(Main main, Recycleradapter adapter) {
+    public DumbActionListener(Main main, Recycleradapter adapter, ViewConfigProvider configProvider) {
         this.main = main;
         this.adapter = adapter;
+        this.configProvider = configProvider;
     }
 
     @Override
@@ -30,6 +32,10 @@ public class DumbActionListener implements ActionListener<DataHolder> {
 
     @Override
     public void onIconClickListener(ViewHolder holder) {
-        adapter.toggleChecked(holder.getAdapterPosition(), holder.getCheckView());
+        if(configProvider.getConfig().isList()){
+            adapter.toggleChecked(holder.getAdapterPosition(), holder.getCheckView());
+        } else {
+            onListItemClicked(holder, holder.getData());
+        }
     }
 }

@@ -82,7 +82,7 @@ public class Recycleradapter extends RecyclerArrayAdapter<String, RecyclerView.V
 
     public Recycleradapter(Main main, UtilitiesProviderInterface utilsProvider, ArrayList<Layoutelements> items, Context context) {
         this.viewConfigProvider = new DumbConfigProvider(main);
-        this.listener = new DumbActionListener(main, this);
+        this.listener = new DumbActionListener(main, this, viewConfigProvider);
 
         this.main = main;
         this.utilsProvider = utilsProvider;
