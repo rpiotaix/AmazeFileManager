@@ -80,6 +80,7 @@
     <color name="accent_blue_grey">#607d8b</color>
     <color name="accent_super_su">#004d40</color>
 
+    <color name="selection_grey">#757575</color>
     <!-- indicator -->
     <color name="page_indicator_dark">#80333333</color>
     <color name="page_indicator_dark_selected">#ff333333</color>
