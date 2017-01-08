@@ -3,6 +3,8 @@ package com.amaze.filemanager.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -22,8 +24,8 @@ import com.amaze.filemanager.activities.MainActivity;
 import com.amaze.filemanager.adapters.utils.ActionListener;
 import com.amaze.filemanager.adapters.utils.DataHolder;
 import com.amaze.filemanager.adapters.utils.DumbActionListener;
-import com.amaze.filemanager.adapters.utils.config.DumbConfigProvider;
 import com.amaze.filemanager.adapters.utils.config.DumbDataHolder;
+import com.amaze.filemanager.adapters.utils.config.SharedPreferencesConfigProvider;
 import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.adapters.utils.holder.ApkViewHolder;
 import com.amaze.filemanager.adapters.utils.holder.MediaViewHolder;
@@ -31,6 +33,7 @@ import com.amaze.filemanager.adapters.utils.holder.ResourceViewHolder;
 import com.amaze.filemanager.adapters.utils.holder.ViewHolder;
 import com.amaze.filemanager.filesystem.BaseFile;
 import com.amaze.filemanager.fragments.Main;
+import com.amaze.filemanager.fragments.PropertiesSheet;
 import com.amaze.filemanager.ui.Layoutelements;
 import com.amaze.filemanager.ui.icons.Icons;
 import com.amaze.filemanager.ui.views.CircleGradientDrawable;
@@ -81,7 +84,7 @@ public class Recycleradapter extends RecyclerArrayAdapter<String, RecyclerView.V
     }
 
     public Recycleradapter(Main main, UtilitiesProviderInterface utilsProvider, ArrayList<Layoutelements> items, Context context) {
-        this.viewConfigProvider = new DumbConfigProvider(main);
+        this.viewConfigProvider = new SharedPreferencesConfigProvider(PreferenceManager.getDefaultSharedPreferences(main.getContext()), main);
         this.listener = new DumbActionListener(main, this, viewConfigProvider);
 
         this.main = main;
@@ -110,7 +113,6 @@ public class Recycleradapter extends RecyclerArrayAdapter<String, RecyclerView.V
     public void addItem() {
         //notifyDataSetChanged();
         notifyItemInserted(getItemCount());
-
     }
 
     /**

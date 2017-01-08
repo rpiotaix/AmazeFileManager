@@ -119,7 +119,7 @@ public class Main extends android.support.v4.app.Fragment {
     public LinearLayout buttons;
     public int sortby, dsort, asc;
     public String home, CURRENT_PATH = "", goback;
-    public boolean selection, results = false, SHOW_HIDDEN, CIRCULAR_IMAGES, SHOW_PERMISSIONS, SHOW_SIZE, SHOW_LAST_MODIFIED;
+    public boolean selection, results = false, SHOW_HIDDEN;
     public LinearLayout pathbar;
     public OpenMode openMode = OpenMode.FILE;
     public android.support.v7.widget.RecyclerView listView;
@@ -138,12 +138,10 @@ public class Main extends android.support.v4.app.Fragment {
     public ArrayList<BaseFile> searchHelper = new ArrayList<>();
     public Resources res;
     HashMap<String, Bundle> scrolls = new HashMap<String, Bundle>();
-    Main ma = this;
     IconUtils icons;
     View footerView;
     String itemsstring;
     public int no;
-    TabHandler tabHandler;
     LinearLayoutManager mLayoutManager;
     GridLayoutManager mLayoutManagerGrid;
     boolean addheader = false;
@@ -202,12 +200,8 @@ public class Main extends android.support.v4.app.Fragment {
         skinTwoColor = MAIN_ACTIVITY.getColorPreference().getColor(ColorUsage.PRIMARY_TWO);
         icon_skin_color = Color.parseColor(iconskin);
 
-        SHOW_PERMISSIONS = Sp.getBoolean("showPermissions", false);
-        SHOW_SIZE = Sp.getBoolean("showFileSize", false);
         SHOW_DIVIDERS = Sp.getBoolean("showDividers", true);
         GO_BACK_ITEM = Sp.getBoolean("goBack_checkbox", false);
-        CIRCULAR_IMAGES = Sp.getBoolean("circularimages", true);
-        SHOW_LAST_MODIFIED = Sp.getBoolean("showLastModified", true);
         SHOW_THUMBS = Sp.getBoolean("showThumbs", true);
         icons = new IconUtils(Sp, getActivity());
     }
@@ -690,7 +684,7 @@ public class Main extends android.support.v4.app.Fragment {
                     }
                     return true;*/
                 case R.id.delete:
-                    utils.deleteFiles(LIST_ELEMENTS, ma, plist, utilsProvider.getAppTheme());
+                    utils.deleteFiles(LIST_ELEMENTS, Main.this, plist, utilsProvider.getAppTheme());
                     return true;
                 case R.id.share:
                     ArrayList<File> arrayList = new ArrayList<File>();
@@ -807,7 +801,7 @@ public class Main extends android.support.v4.app.Fragment {
     };
 
     public void home() {
-        ma.loadlist((ma.home), false, OpenMode.FILE);
+        loadlist(home, false, OpenMode.FILE);
     }
 
     /**
@@ -935,7 +929,7 @@ public class Main extends android.support.v4.app.Fragment {
             bindDrive(path);
         else */
         if (loadList != null) loadList.cancel(true);
-        loadList = new LoadList(ma.getActivity(), utilsProvider, back, ma, openMode);
+        loadList = new LoadList(getActivity(), utilsProvider, back, this, openMode);
         loadList.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, (path));
 
     }
@@ -1018,7 +1012,7 @@ public class Main extends android.support.v4.app.Fragment {
                     switchToGrid();
                 else if (!grid && !IS_LIST) switchToList();
                 if (adapter == null)
-                    adapter = new Recycleradapter(ma, utilsProvider, bitmap, ma.getActivity());
+                    adapter = new Recycleradapter(this, utilsProvider, bitmap, getActivity());
                 else {
                     adapter.generate(LIST_ELEMENTS);
                 }
