@@ -43,6 +43,7 @@ public class ResourceViewHolder extends ViewHolder {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void loadIcon() {
         BitmapTypeRequest<Integer> r = Glide.with(getAdapter().getContext())
                                             .load(getIconRes(getData()))

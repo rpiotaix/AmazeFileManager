@@ -1,6 +1,7 @@
 package com.amaze.filemanager.adapters.utils.config;
 
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 
 import com.amaze.filemanager.fragments.Main;
 
@@ -16,6 +17,7 @@ public class SharedPreferencesConfigProvider implements ViewConfigProvider {
         config = new SharedPreferencesConfig(preferences, main);
     }
 
+    @NonNull
     @Override
     public ViewConfig getConfig() {
         return config;
