@@ -86,7 +86,7 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
             checkImageView.setBackgroundDrawable(
                     new CircleGradientDrawable(
                             accentColor,
-                            utilsProvider.getAppTheme(),
+                            getUtilsProvider().getAppTheme(),
                             getViewContext().getResources().getDisplayMetrics()
                     )
             );

@@ -81,7 +81,7 @@ public class ResourceViewHolder extends ViewHolder {
                 view.setBackgroundDrawable(
                         new CircleGradientDrawable(
                                 getColor(),
-                                AppTheme.LIGHT,
+                                getUtilsProvider().getAppTheme(),
                                 view.getResources().getDisplayMetrics())
                 );
                 view.setScaleType(ImageView.ScaleType.CENTER);
