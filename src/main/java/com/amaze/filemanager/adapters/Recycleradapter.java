@@ -24,7 +24,7 @@ import com.amaze.filemanager.activities.MainActivity;
 import com.amaze.filemanager.adapters.utils.ActionListener;
 import com.amaze.filemanager.adapters.utils.DataHolder;
 import com.amaze.filemanager.adapters.utils.DumbActionListener;
-import com.amaze.filemanager.adapters.utils.config.DumbDataHolder;
+import com.amaze.filemanager.adapters.utils.DumbDataHolder;
 import com.amaze.filemanager.adapters.utils.config.SharedPreferencesConfigProvider;
 import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.adapters.utils.holder.ApkViewHolder;

@@ -1,4 +1,4 @@
-package com.amaze.filemanager.adapters.utils.config;
+package com.amaze.filemanager.adapters.utils;
 
 import android.net.Uri;
 
