@@ -68,6 +68,11 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
         setCheckIcons();
 
         applySelectionStyle();
+
+        if (utilsProvider.getAppTheme().equals(AppTheme.LIGHT))
+            // TODO change color here and put correct one (from recycleradapter)
+            about.setColorFilter(getViewContext().getResources().getColor(R.color.selection_grey));
+        getAdapter().showPopup(about, this);
     }
 
     private void setCheckIcons() {

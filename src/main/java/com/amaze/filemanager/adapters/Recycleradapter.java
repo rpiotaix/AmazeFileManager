@@ -329,12 +329,12 @@ public class Recycleradapter extends RecyclerArrayAdapter<String, RecyclerView.V
 // TODO comment: emptying special test activated when unknown file is encountered (behavior is to display file ext in icon)
 //            holder.genericText.setText("");
 //
-// TODO implement.
-//            if (holder.about != null) {
-//                if (utilsProvider.getAppTheme().equals(AppTheme.LIGHT))
-//                    holder.about.setColorFilter(grey_color);
-//                showPopup(holder.about, rowItem, p);
-//            }
+// TODO comment: contextual menu
+//if (holder.about != null) {
+//    if (utilsProvider.getAppTheme().equals(AppTheme.LIGHT))
+//        holder.about.setColorFilter(grey_color);
+//    showPopup(holder.about, rowItem, p);
+//}
 // TODO comment: Event handler for click on the icon. ACTION=select item
 //holder.genericIcon.setOnClickListener(new View.OnClickListener() {
 //    @Override
@@ -685,10 +685,12 @@ public class Recycleradapter extends RecyclerArrayAdapter<String, RecyclerView.V
                 || iconRes == R.drawable.ic_doc_apk_white;
     }
 
-    private void showPopup(View v, final Layoutelements rowItem, final int position) {
+    public void showPopup(View v, final ViewHolder holder) {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final int position = holder.getAdapterPosition();
+                final Layoutelements rowItem = items.get(position);
                 PopupMenu popupMenu = new PopupMenu(main.getActivity(), view);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override

@@ -12,7 +12,6 @@ public class DumbDataHolder implements DataHolder {
         this.e = e;
     }
 
-
     @Override
     public Uri getUri() {
         return Uri.parse("file://" + e.getDesc());
