@@ -1,6 +1,7 @@
 package com.amaze.filemanager.adapters.utils;
 
 import com.amaze.filemanager.adapters.Recycleradapter;
+import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.adapters.utils.holder.ViewHolder;
 import com.amaze.filemanager.fragments.Main;
 

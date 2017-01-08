@@ -1,4 +1,4 @@
-package com.amaze.filemanager.adapters.utils;
+package com.amaze.filemanager.adapters.utils.config;
 
 import com.amaze.filemanager.fragments.Main;
 

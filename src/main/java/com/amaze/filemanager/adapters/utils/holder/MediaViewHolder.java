@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.amaze.filemanager.R;
 import com.amaze.filemanager.adapters.Recycleradapter;
-import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
+import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.utils.UtilitiesProviderInterface;
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;

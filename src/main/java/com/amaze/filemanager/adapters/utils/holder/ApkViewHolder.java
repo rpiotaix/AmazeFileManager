@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.amaze.filemanager.R;
 import com.amaze.filemanager.adapters.Recycleradapter;
-import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
+import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.adapters.utils.apk.PackageInfoIconGetter;
 import com.amaze.filemanager.adapters.utils.apk.PackageInfoModelLoader;
 import com.amaze.filemanager.utils.UtilitiesProviderInterface;

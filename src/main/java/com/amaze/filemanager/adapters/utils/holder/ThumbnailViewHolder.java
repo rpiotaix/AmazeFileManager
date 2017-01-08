@@ -5,13 +5,12 @@ import android.support.annotation.DrawableRes;
 import android.view.View;
 
 import com.amaze.filemanager.adapters.Recycleradapter;
-import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
+import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.request.animation.DrawableCrossFadeViewAnimation;
 
 import java.util.ArrayList;
 import java.util.List;

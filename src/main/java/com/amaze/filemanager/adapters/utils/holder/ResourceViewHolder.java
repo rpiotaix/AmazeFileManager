@@ -10,7 +10,7 @@ import com.amaze.filemanager.R;
 import com.amaze.filemanager.adapters.Recycleradapter;
 import com.amaze.filemanager.adapters.utils.DataHolder;
 import com.amaze.filemanager.adapters.utils.IconTarget;
-import com.amaze.filemanager.adapters.utils.ViewConfigProvider;
+import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.ui.icons.Icons;
 import com.amaze.filemanager.ui.views.CircleGradientDrawable;
 import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;

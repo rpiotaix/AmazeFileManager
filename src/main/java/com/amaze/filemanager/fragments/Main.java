@@ -208,6 +208,7 @@ public class Main extends android.support.v4.app.Fragment {
         GO_BACK_ITEM = Sp.getBoolean("goBack_checkbox", false);
         CIRCULAR_IMAGES = Sp.getBoolean("circularimages", true);
         SHOW_LAST_MODIFIED = Sp.getBoolean("showLastModified", true);
+        SHOW_THUMBS = Sp.getBoolean("showThumbs", true);
         icons = new IconUtils(Sp, getActivity());
     }
 
@@ -266,7 +267,6 @@ public class Main extends android.support.v4.app.Fragment {
         });
         buttons = (LinearLayout) getActivity().findViewById(R.id.buttons);
         pathbar = (LinearLayout) getActivity().findViewById(R.id.pathbar);
-        SHOW_THUMBS = Sp.getBoolean("showThumbs", true);
         res = getResources();
         pathname = (TextView) getActivity().findViewById(R.id.pathname);
         mFullPath = (TextView) getActivity().findViewById(R.id.fullpath);

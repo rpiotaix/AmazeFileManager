@@ -1,7 +1,8 @@
-package com.amaze.filemanager.adapters.utils;
+package com.amaze.filemanager.adapters.utils.config;
 
 import android.net.Uri;
 
+import com.amaze.filemanager.adapters.utils.DataHolder;
 import com.amaze.filemanager.ui.Layoutelements;
 import com.amaze.filemanager.ui.icons.MimeTypes;
 

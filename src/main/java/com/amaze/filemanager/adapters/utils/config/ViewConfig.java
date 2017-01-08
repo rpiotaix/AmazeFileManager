@@ -1,4 +1,4 @@
-package com.amaze.filemanager.adapters.utils;
+package com.amaze.filemanager.adapters.utils.config;
 
 public interface ViewConfig {
     boolean isList();
