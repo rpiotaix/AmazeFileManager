@@ -239,18 +239,6 @@ public class RootHelper {
         return null;
     }
 
-    public static BaseFile generateBaseFile(DocumentFile file, boolean showHidden) {
-        long size = 0;
-        if (!file.isDirectory())
-            size = file.length();
-        BaseFile baseFile=new BaseFile(file.getName(), parseDocumentFilePermission(file),
-                file.lastModified() , size, file.isDirectory());
-        baseFile.setName(file.getName());
-        baseFile.setMode(OpenMode.OTG);
-
-        return baseFile;
-    }
-
     public static String parseFilePermission(File f) {
         String per = "";
         if (f.canRead()) {

@@ -8,4 +8,8 @@ public interface ViewConfig {
     boolean showLastModified();
 
     boolean circularThumbnails();
+
+    boolean showPermissions();
+
+    boolean showSize();
 }

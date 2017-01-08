@@ -5,6 +5,9 @@ import android.net.Uri;
 public interface DataHolder {
     Uri getUri();
 
+    @Deprecated
+    String getPermissionsAsString();
+
     enum Type {
         FILE,
         DIRECTORY
@@ -19,4 +22,7 @@ public interface DataHolder {
     String getLastModified();
 
     String getExtension();
+
+    @Deprecated
+    String getSizeAsString();
 }

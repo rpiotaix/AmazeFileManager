@@ -6,7 +6,6 @@ import com.amaze.filemanager.ui.Layoutelements;
 import com.amaze.filemanager.ui.icons.MimeTypes;
 
 public class DumbDataHolder implements DataHolder {
-
     private final Layoutelements e;
 
     public DumbDataHolder(Layoutelements e) {
@@ -17,6 +16,11 @@ public class DumbDataHolder implements DataHolder {
     @Override
     public Uri getUri() {
         return Uri.parse("file://" + e.getDesc());
+    }
+
+    @Override
+    public String getPermissionsAsString() {
+        return e.getPermissions();
     }
 
     @Override
@@ -44,5 +48,10 @@ public class DumbDataHolder implements DataHolder {
         int lastDotPos = name.lastIndexOf('.');
 
         return lastDotPos == -1 ? "" : name.substring(lastDotPos + 1);
+    }
+
+    @Override
+    public String getSizeAsString() {
+        return e.getSize();
     }
 }

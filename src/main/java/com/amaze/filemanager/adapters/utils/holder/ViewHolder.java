@@ -36,7 +36,7 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
     private DataHolder data;
     @Deprecated
     private RoundedImageView pictureIcon;
-    private ImageView icon;
+    protected ImageView icon;
     @Deprecated
     private ImageView apkIcon;
     @Deprecated
@@ -184,6 +184,14 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
 
         loadIcon();
 
+        if (getConfig().showPermissions()) {
+            perm.setText(data.getPermissionsAsString());
+        }
+
+        if (getConfig().showSize()) {
+            txtDesc.setText(data.getSizeAsString());
+        }
+
     }
 
     protected void handleSelection() {
@@ -235,7 +243,7 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
         }
     }
 
-    public boolean isSelected(){
+    public boolean isSelected() {
         return getAdapter().isChecked(getAdapterPosition());
     }
 }

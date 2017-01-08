@@ -28,4 +28,14 @@ public class DumbViewConfig implements ViewConfig {
     public boolean circularThumbnails() {
         return main.CIRCULAR_IMAGES;
     }
+
+    @Override
+    public boolean showPermissions() {
+        return main.SHOW_PERMISSIONS;
+    }
+
+    @Override
+    public boolean showSize() {
+        return main.SHOW_SIZE;
+    }
 }
