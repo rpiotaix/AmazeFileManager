@@ -10,7 +10,7 @@ import com.amaze.filemanager.adapters.Recycleradapter;
 import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.adapters.utils.apk.PackageInfoIconGetter;
 import com.amaze.filemanager.adapters.utils.apk.PackageInfoModelLoader;
-import com.amaze.filemanager.utils.UtilitiesProviderInterface;
+import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;
 import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
