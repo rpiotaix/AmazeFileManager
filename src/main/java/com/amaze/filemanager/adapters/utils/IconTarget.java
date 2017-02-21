@@ -17,20 +17,24 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
  */
 
 public class IconTarget extends BitmapImageViewTarget {
+    private ImageView imageView;
     private Context viewContext;
     private ColorPreference colorPreference;
     private boolean selected;
 
     public IconTarget(ImageView imageView, ColorPreference colorPreference) {
         super(imageView);
+        this.imageView = imageView;
         this.viewContext = view.getContext();
         this.colorPreference = colorPreference;
     }
 
     @Override
     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-        String s = "Loaded: " + resource.getWidth() + "x" + resource.getHeight();
+        String s = "Loaded: " + resource.getWidth() + "x" + resource.getHeight() + " / w" + imageView.getWidth() + "x" + imageView.getHeight();
         Log.i("IconTarget", s);
+
+
 
         super.onResourceReady(resource, glideAnimation);
     }
