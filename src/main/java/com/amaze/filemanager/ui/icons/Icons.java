@@ -23,6 +23,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.DrawableRes;
 import android.util.SparseArray;
 
 import com.amaze.filemanager.R;
@@ -33,6 +34,7 @@ import java.util.HashMap;
 public class Icons {
     private static HashMap<String, Integer> sMimeIconIds = new HashMap<String, Integer>();
     private static SparseArray<Bitmap> sMimeIcons = new SparseArray<>();
+    private static HashMap<String, Integer> sTypeIcons = new HashMap<>();
 
     private static void add(String mimeType, int resId) {
         if (sMimeIconIds.put(mimeType, resId) != null) {
@@ -219,6 +221,10 @@ public class Icons {
                 "application/x-shockwave-flash"
         );
 
+        sTypeIcons.put("audio", R.drawable.ic_doc_audio_am);
+        sTypeIcons.put("image", R.drawable.ic_doc_image);
+        sTypeIcons.put("text", R.drawable.ic_doc_text_am);
+        sTypeIcons.put("video", R.drawable.ic_doc_video_am);
     }
 
     public static boolean isText(String name) {
@@ -304,12 +310,30 @@ public class Icons {
         return false;
     }
 
+    @DrawableRes
+    public static int iconFromMimeType(String mime) {
+        if (mime != null) {
+            if (mime.equals("*/*")) return R.drawable.ic_doc_generic_am;
+
+            Integer res = sMimeIconIds.get(mime);
+            if (res != null) return res;
+
+            String typeOnly = mime.substring(0, mime.indexOf("/"));
+            res = sTypeIcons.get(typeOnly);
+            if (res != null) return res;
+        }
+
+        return R.drawable.ic_doc_generic_am;
+    }
+
+    @Deprecated
     public static BitmapDrawable loadMimeIcon(String path, boolean grid, final Resources res) {
         String mimeType = MimeTypes.getMimeType(new File(path));
         if (mimeType == null) {
             /* if(grid) return loadBitmapDrawableById(res, R.drawable.ic_doc_generic_am_grid);*/
             return loadBitmapDrawableById(res, R.drawable.ic_doc_generic_am);
         }
+
 
         // Look for exact match first
         Integer resId = sMimeIconIds.get(mimeType);
@@ -351,7 +375,7 @@ public class Icons {
            /* if (grid) resId = R.drawable.ic_doc_audio_am_grid; else*/
             resId = R.drawable.ic_doc_audio_am;
         } else if ("image".equals(typeOnly)) {
-            if (grid) resId =  R.drawable.ic_doc_image_grid;
+            if (grid) resId = R.drawable.ic_doc_image_grid;
             else resId = R.drawable.ic_doc_image;
         } else if ("text".equals(typeOnly)) {
             /*if (grid) resId = R.drawable.ic_doc_text_am_grid; else*/

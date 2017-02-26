@@ -56,8 +56,6 @@ public final class MimeTypes {
     }
 
     static {
-
-
 		/*
          * ================= MIME TYPES ====================
 		 */
@@ -138,29 +136,27 @@ public final class MimeTypes {
 
     /**
      * Get Mime Type of a file
+     *
      * @param file the file of which mime type to get
-     * @return Mime type in form of String
+     * @return Mime type in form of String, null if directory
      */
     public static String getMimeType(File file) {
         if (file.isDirectory()) {
             return null;
         }
 
-        String type = "*/*";
-        final String extension = getExtension(file.getName());
+        String type = fromExtension(getExtension(file.getName()));
 
-        // mapping extension to system mime types
-        if (extension != null && !extension.isEmpty()) {
-            final String extensionLowerCase = extension.toLowerCase(Locale
-                    .getDefault());
-            final MimeTypeMap mime = MimeTypeMap.getSingleton();
-            type = mime.getMimeTypeFromExtension(extensionLowerCase);
-            if (type == null) {
-                type = MIME_TYPES.get(extensionLowerCase);
-            }
-        }
-        if(type==null)type="*/*";
-        return type;
+        return type == null ? ALL_MIME_TYPES : type;
+    }
+
+    public static String fromExtension(String extension) {
+        String extensionLowerCase = extension.toLowerCase(Locale.getDefault());
+
+        String type = MimeTypeMap.getSingleton()
+                                 .getMimeTypeFromExtension(extensionLowerCase);
+
+        return type != null ? type : MIME_TYPES.get(extensionLowerCase);
     }
 
     public static boolean mimeTypeMatch(String mime, String input) {
@@ -171,12 +167,13 @@ public final class MimeTypes {
     /**
      * Helper method for {@link #getMimeType(File)}
      * to calculate the last '.' extension of files
+     *
      * @param a the name of file
      * @return extension extracted from name
      */
     public static String getExtension(String a) {
-        if(a.contains("."))
-        return a.substring(a.lastIndexOf(".") + 1).toLowerCase();
+        if (a.contains("."))
+            return a.substring(a.lastIndexOf(".") + 1).toLowerCase();
         else return "";
     }
 
