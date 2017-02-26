@@ -13,9 +13,9 @@ import com.amaze.filemanager.adapters.utils.IconTarget;
 import com.amaze.filemanager.adapters.utils.config.ViewConfigProvider;
 import com.amaze.filemanager.ui.icons.Icons;
 import com.amaze.filemanager.ui.views.CircleGradientDrawable;
-import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;
 import com.amaze.filemanager.utils.color.ColorUsage;
-import com.bumptech.glide.BitmapTypeRequest;
+import com.amaze.filemanager.utils.provider.UtilitiesProviderInterface;
+import com.bumptech.glide.BitmapRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.Transformation;
@@ -45,9 +45,11 @@ public class ResourceViewHolder extends ViewHolder {
     @Override
     @SuppressWarnings("unchecked")
     protected void loadIcon() {
-        BitmapTypeRequest<Integer> r = Glide.with(getAdapter().getContext())
-                                            .load(getIconRes(getData()))
-                                            .asBitmap();
+        BitmapRequestBuilder<Integer, Bitmap> r = Glide.with(getAdapter().getContext())
+                                                       .load(getIconRes(getData()))
+                                                       .asBitmap()
+                                                       .fitCenter()
+                                                       .atMost();
 
         if (!getConfig().isList()) {
             List<Transformation<Bitmap>> transformations = new ArrayList<>();
