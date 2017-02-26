@@ -193,7 +193,7 @@ public abstract class ViewHolder extends RecyclerView.ViewHolder implements View
             perm.setText(data.getPermissionsAsString());
         }
 
-        if (getConfig().showSize()) {
+        if (getConfig().showSize() && data.getType().equals(DataHolder.Type.FILE)) {
             txtDesc.setText(data.getSizeAsString());
         }
 
